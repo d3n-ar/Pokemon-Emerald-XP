@@ -1,0 +1,29 @@
+{
+  "id": "MAP_ANCIENT_LAKE",
+  "name": "AncientLake",
+  "layout": "LAYOUT_ANCIENT_LAKE",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ALTERING_CAVE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "TOALTER",
+      "x": 1,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_ALTERING_CAVE",
+      "dest_warp_id": "TOLAKE"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

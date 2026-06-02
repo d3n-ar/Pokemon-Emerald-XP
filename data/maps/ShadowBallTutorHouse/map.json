@@ -1,0 +1,52 @@
+{
+  "id": "MAP_SHADOW_BALL_TUTOR_HOUSE",
+  "name": "ShadowBallTutorHouse",
+  "layout": "LAYOUT_SHADOW_BALL_TUTOR_HOUSE",
+  "music": "MUS_OLDALE",
+  "region_map_section": "MAPSEC_OLDALE_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "1",
+      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "x": 6,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ShadowBallTutorHouse_MapScripts",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "warp_id": "SBT_HOUSE2",
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN",
+      "dest_warp_id": "SBTHOUSE_DOOR"
+    },
+    {
+      "warp_id": "SBT_HOUSE1",
+      "x": 7,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN",
+      "dest_warp_id": "SBTHOUSE_DOOR"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}
