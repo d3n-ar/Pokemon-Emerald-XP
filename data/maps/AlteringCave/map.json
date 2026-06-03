@@ -21,6 +21,22 @@
       "elevation": 0,
       "dest_map": "MAP_ROUTE103",
       "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "ALTER_TO_DRIP",
+      "x": 1,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_DRIPSTONE_CAVE",
+      "dest_warp_id": "DRIP_TO_ALTER"
+    },
+    {
+      "warp_id": "TOLAKE",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_ANCIENT_LAKE",
+      "dest_warp_id": "TOALTER"
     }
   ],
   "coord_events": [],

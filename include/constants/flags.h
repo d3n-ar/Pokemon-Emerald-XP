@@ -1355,6 +1355,8 @@
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)
 
+#define FLAG_RUN_TOGGLE                              (SYSTEM_FLAGS + 0x7)
+
 // Badges
 #define FLAG_BADGE01_GET                             (SYSTEM_FLAGS + 0x7)
 #define FLAG_BADGE02_GET                             (SYSTEM_FLAGS + 0x8)

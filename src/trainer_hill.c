@@ -163,32 +163,47 @@ static const u16 sPrizeListSkillSwap[]   = {ITEM_TM_SKILL_SWAP,    ITEM_ETHER, I
 static const u16 sPrizeListGigaDrain[]   = {ITEM_TM_GIGA_DRAIN,    ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
 static const u16 sPrizeListAttract[]     = {ITEM_TM_ATTRACT,       ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
 
+static const u16 sPrizListIceBeam[]     = {ITEM_TM_ICE_BEAM,      ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListDragonClaw[]    = {ITEM_TM_DRAGON_CLAW,   ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListHail[]     = {ITEM_TM_HAIL,          ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListRainDance[]      = {ITEM_TM_RAIN_DANCE,     ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListThunderbolt[]   = {ITEM_TM_THUNDERBOLT,    ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListCalmMind[]     = {ITEM_TM_CALM_MIND,      ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListBlizzard[]     = {ITEM_TM_BLIZZARD,       ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListSandstorm[]    = {ITEM_TM_SANDSTORM,     ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListFireBlast[]    = {ITEM_TM_FIRE_BLAST,     ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+static const u16 sPrizeListRockTomb[]     = {ITEM_TM_ROCK_TOMB,      ITEM_ETHER, ITEM_MAX_POTION, ITEM_REVIVE, ITEM_FLUFFY_TAIL, ITEM_GREAT_BALL};
+
 static const u16 *const sPrizeLists1[NUM_TRAINER_HILL_PRIZE_LISTS] =
 {
-    sPrizeListRareCandy1,
-    sPrizeListLuxuryBall1,
-    sPrizeListMaxRevive1,
-    sPrizeListMaxEther1,
-    sPrizeListElixir1,
-    sPrizeListRoar,
-    sPrizeListSludgeBomb,
-    sPrizeListToxic,
-    sPrizeListSunnyDay,
-    sPrizeListEarthQuake
+    sPrizeListBrickBreak, //1
+    sPrizeListTorment, //2
+    sPrizeListSkillSwap, //3
+    sPrizeListGigaDrain, //4
+    sPrizeListAttract, //5
+    sPrizeListRoar, //6
+    sPrizeListSludgeBomb, //7
+    sPrizeListToxic, //8 THE LIST USED TO END HERE I JUST ADDED MORE 
+    sPrizeListRareCandy2, //9
+    sPrizeListSandstorm, //10
+    sPrizeListMaxRevive2, //11
+    sPrizeListRockTomb //12
 };
 
 static const u16 *const sPrizeLists2[NUM_TRAINER_HILL_PRIZE_LISTS] =
 {
-    sPrizeListRareCandy2,
-    sPrizeListLuxuryBall2,
-    sPrizeListMaxRevive2,
-    sPrizeListMaxEther2,
-    sPrizeListElixir2,
-    sPrizeListBrickBreak,
-    sPrizeListTorment,
-    sPrizeListSkillSwap,
-    sPrizeListGigaDrain,
-    sPrizeListAttract
+    sPrizListIceBeam, //1
+    sPrizeListDragonClaw, //2
+    sPrizeListHail, //3
+    sPrizeListEarthQuake, //4
+    sPrizeListRainDance, //5
+    sPrizeListBrickBreak, //6
+    sPrizeListSunnyDay, //7
+    sPrizeListThunderbolt, //8 THE LIST USED TO END HERE I JUST ADDED MORE
+    sPrizeListCalmMind, //9
+    sPrizeListBlizzard, //10
+    sPrizeListLuxuryBall2, //11
+    sPrizeListFireBlast //12
 };
 
 static const u16 *const *const sPrizeListSets[] =
@@ -1014,10 +1029,9 @@ static u8 GetPrizeListId(bool8 allowTMs)
     // In practice, the conditional below is always true.
     // The 2nd half of the lists in both sets of lists all have a TM as the "grand prize", while the 1st half do not,
     // so taking the mod of the (total / 2) ensures that a prize list without a TM will be used.
-    if (allowTMs)
-        modBy = NUM_TRAINER_HILL_PRIZE_LISTS;
-    else
-        modBy = NUM_TRAINER_HILL_PRIZE_LISTS / 2;
+    
+    modBy = NUM_TRAINER_HILL_PRIZE_LISTS;
+ 
 
     prizeListId %= modBy;
     return prizeListId;
@@ -1073,15 +1087,15 @@ static u16 GetPrizeItemId(void)
     // entering the Hall of Fame, there would be 1 additional prize possibility (ITEM_MAX_ETHER)
     // as Normal / Unique modes would use sPrizeListSets[0][3] / sPrizeListSets[1][3] respectively.
     minutes = (signed)(gSaveBlock1Ptr->trainerHill.timer) / (60 * 60);
-    if (minutes < 12)
+    if (minutes < 14)
         id = 0; // Depends on list
-    else if (minutes < 13)
+    else if (minutes < 22)
         id = 1; // ITEM_ETHER
-    else if (minutes < 14)
+    else if (minutes < 25)
         id = 2; // ITEM_MAX_POTION
-    else if (minutes < 16)
+    else if (minutes < 28)
         id = 3; // ITEM_REVIVE
-    else if (minutes < 18)
+    else if (minutes < 31)
         id = 4; // ITEM_FLUFFY_TAIL
     else
         id = 5; // ITEM_GREAT_BALL
